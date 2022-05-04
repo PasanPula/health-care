@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Start extends StatelessWidget {
   const Start({Key? key}) : super(key: key);
@@ -34,10 +35,10 @@ class Start extends StatelessWidget {
                           Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                            children:const [
+                            children:[
                               AutoSizeText(
                                 'Welcome',
-                                style: TextStyle(
+                                style: GoogleFonts.raleway(
                                   fontSize: 40, 
                                   height: 1.4, 
                                   fontWeight: FontWeight.w800, 
@@ -49,11 +50,11 @@ class Start extends StatelessWidget {
                               ),
                               AutoSizeText(
                               "Let's Get Started",
-                              style: TextStyle(
+                              style: GoogleFonts.raleway(
                                 fontSize: 15, 
                                 height: 1.4, 
                                 fontWeight: FontWeight.w800, 
-                                color: Colors.white60,
+                                color: Colors.white54,
                                 ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -98,18 +99,18 @@ class Start extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                             onPrimary: Colors.grey,
                             elevation: 4,
-                            fixedSize: const Size(300, 60),
+                            fixedSize: const Size(250, 50),
                             primary: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
                         onPressed: () {
-                          print('Button pressed ...');
+                            Navigator.pushNamed(context, '/login');
                         },
-                        child: const Text(
+                        child: AutoSizeText(
                           'Login',
-                          style: TextStyle(
+                          style: GoogleFonts.outfit(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                             color: Colors.black,
@@ -122,18 +123,18 @@ class Start extends StatelessWidget {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             elevation: 4,
-                            fixedSize: const Size(300, 60),
+                            fixedSize: const Size(250, 50),
                             primary: Colors.black,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             padding: const EdgeInsets.fromLTRB(20, 0, 20, 0)),
                         onPressed: () {
-                          print('Button pressed ...');
+                            Navigator.pushNamed(context, '/register');
                         },
-                        child: const Text(
+                        child:  AutoSizeText(
                           'Register',
-                          style: TextStyle(
+                          style: GoogleFonts.outfit(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,

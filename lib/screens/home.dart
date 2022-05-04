@@ -1,12 +1,21 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      //color set to transperent or set your own color
+      statusBarIconBrightness: Brightness.dark,
+      //set brightness for icons, like dark background light icons
+    ));
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -42,11 +51,11 @@ class Home extends StatelessWidget {
                         children: [
                           Column(
                             mainAxisSize: MainAxisSize.max,
-                            children: const [
+                            children: [
                               AutoSizeText(
                                 'Personalized \nGuidence For\nNon-communicable\nDeceases',
-                                style: TextStyle(
-                                  fontSize: 30, 
+                                style: GoogleFonts.raleway(
+                                  fontSize: 28, 
                                   height: 1.4, 
                                   fontWeight: FontWeight.w800, 
                                   color: Colors.white,
@@ -102,25 +111,27 @@ class Home extends StatelessWidget {
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(elevation: 4,
-                              fixedSize: const Size(150, 60),
-                              primary: Colors.deepOrange,
+                              fixedSize: const Size(140, 50),
+                              primary: Colors.blue,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               padding: const EdgeInsets.fromLTRB(40,0,20,0)),
-                          onPressed: () {},
+                          onPressed: () {
+                             Navigator.pushNamed(context, '/start');
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 'Next',
-                                style: TextStyle(
+                                style: GoogleFonts.outfit(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.arrow_forward,
                                 color: Colors.white,
                               )

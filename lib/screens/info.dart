@@ -17,17 +17,20 @@ class _InfoState extends State<Info> {
   int _currentHorizontalIntValue = 165;
   int _currentHorizontalIntValue2 = 65;
   int _selectedGender = 0;
+  int _selectedFood = 0;
+  int _selectedSmoker = 0;
   String? selectedValue;
-List<String> items = [
-  'Item1',
-  'Item2',
-  'Item3',
-  'Item4',
-  'Item5',
-  'Item6',
-  'Item7',
-  'Item8',
-];
+  List<String> items = [
+    'A+',
+    'A-',
+    'B+',
+    'B-',
+    'O+',
+    'O-',
+    'AB+',
+    'AB-',
+  ];
+  ScrollController scollBarController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,31 +46,36 @@ List<String> items = [
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFFF1F4F8),
         flexibleSpace: Column(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.chevron_left_rounded,
-                    color: Colors.black,
-                    size: 40,
-                  ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom
+                  (onPrimary: const Color(0xFFF1F4F8),
+                  primary: const Color(0xFFF1F4F8),
+                  elevation: 0),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/starttrace');
+                    Navigator.pop(context);
                   },
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 4, 0, 0),
-                  child: AutoSizeText('Back',
-                      style: GoogleFonts.outfit(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.chevron_left_rounded,
                         color: Colors.black,
-                      )),
+                        size: 25,
+                      ),
+                      AutoSizeText('Back',
+                          style: GoogleFonts.outfit(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ))
+                    ],
+                  ),
                 ),
               ],
             )
@@ -99,7 +107,7 @@ List<String> items = [
                           children: [
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0, 10, 0, 20),
+                                  0, 0, 0, 20),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -107,7 +115,7 @@ List<String> items = [
                                   AutoSizeText(
                                     'Please Complete \n the Following Details.',
                                     style: GoogleFonts.outfit(
-                                        fontSize: 25,
+                                        fontSize: 24,
                                         fontWeight: FontWeight.w500,
                                         color: Colors.blue,
                                         shadows: [
@@ -129,254 +137,487 @@ List<String> items = [
                                 child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   30, 0, 30, 40),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  // color: const Color(0xFFF1F4F8),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      blurRadius: 10,
-                                      color: Color(0x2F565555),
-                                      offset: Offset(-1, 0),
-                                      spreadRadius: 2,
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: SingleChildScrollView(
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        25, 20, 25, 25),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'Gender:',
-                                                      style: GoogleFonts.outfit(
-                                                        fontSize: 20,
+                              child: Scrollbar(
+                                controller: scollBarController,
+                                isAlwaysShown: true,
+                                thickness: 8,
+                                radius: const Radius.circular(15),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    // color: const Color(0xFFF1F4F8),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        blurRadius: 10,
+                                        color: Color(0x2F565555),
+                                        offset: Offset(-1, 0),
+                                        spreadRadius: 2,
+                                      )
+                                    ],
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          25, 20, 25, 25),
+                                      child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 0, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Gender:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        FlutterToggleTab(
+                                                          width: 60,
+                                                          height: 40,
+                                                          borderRadius: 10,
+                                                          selectedIndex:
+                                                              _selectedGender,
+                                                          selectedTextStyle:
+                                                              GoogleFonts.lexendDeca(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize: 14,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600),
+                                                          unSelectedTextStyle:
+                                                              GoogleFonts.lexendDeca(
+                                                                  color: Colors
+                                                                      .blueAccent,
+                                                                  fontSize: 12,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400),
+                                                          labels: const [
+                                                            "Male",
+                                                            "Female"
+                                                          ],
+                                                          icons: const [
+                                                            Icons.boy_rounded,
+                                                            Icons.girl_rounded
+                                                          ],
+                                                          selectedLabelIndex:
+                                                              (index) {
+                                                            setState(() {
+                                                              _selectedGender =
+                                                                  index;
+                                                            });
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Height:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child: NumberPicker(
+                                                      textMapper: (numberText) =>
+                                                          "${numberText} cm",
+                                                      value:
+                                                          _currentHorizontalIntValue,
+                                                      minValue: 100,
+                                                      maxValue: 250,
+                                                      step: 1,
+                                                      itemHeight: 40,
+                                                      axis: Axis.horizontal,
+                                                      onChanged: (value) =>
+                                                          setState(() => {
+                                                                _currentHorizontalIntValue =
+                                                                    value,
+                                                                print(
+                                                                    _currentHorizontalIntValue)
+                                                              }),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        border: Border.all(
+                                                            width: 2,
+                                                            color:
+                                                                Colors.black26),
+                                                      ),
+                                                      selectedTextStyle:
+                                                          GoogleFonts.outfit(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        color:
+                                                            Colors.blueAccent,
+                                                      ),
+                                                      textStyle:
+                                                          GoogleFonts.outfit(
+                                                        fontSize: 12,
                                                         fontWeight:
                                                             FontWeight.w500,
-                                                        color: Colors.black,
+                                                        color: Colors.grey,
                                                       ),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      textAlign:
-                                                          TextAlign.center,
                                                     ),
-                                                  ],
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    FlutterToggleTab(
-                                                      width: 50,
-                                                      borderRadius: 15,
-                                                      selectedIndex: _selectedGender,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Weight:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child: NumberPicker(
+                                                      textMapper: (numberText) =>
+                                                          "${numberText} Kg",
+                                                      value:
+                                                          _currentHorizontalIntValue2,
+                                                      minValue: 20,
+                                                      maxValue: 180,
+                                                      step: 1,
+                                                      itemHeight: 40,
+                                                      axis: Axis.horizontal,
+                                                      onChanged: (value) =>
+                                                          setState(() => {
+                                                                _currentHorizontalIntValue2 =
+                                                                    value,
+                                                                print(
+                                                                    _currentHorizontalIntValue)
+                                                              }),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                        border: Border.all(
+                                                            width: 2,
+                                                            color:
+                                                                Colors.black26),
+                                                      ),
                                                       selectedTextStyle:
-                                                          const TextStyle(
+                                                          GoogleFonts.outfit(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w800,
+                                                        color:
+                                                            Colors.blueAccent,
+                                                      ),
+                                                      textStyle:
+                                                          GoogleFonts.outfit(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.grey,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Blood Group:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child:
+                                                        CustomDropdownButton2(
+                                                      dropdownWidth: 160,
+                                                      buttonDecoration:
+                                                          BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                width: 2,
+                                                                color: Colors
+                                                                    .black26,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10)),
+                                                      buttonWidth: 100,
+                                                      buttonHeight: 40,
+                                                      hint: 'A+',
+                                                      dropdownItems: items,
+                                                      value: selectedValue,
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          selectedValue = value;
+                                                        });
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Food Type:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child: FlutterToggleTab(
+                                                      width: 60,
+                                                      height: 40,
+                                                      borderRadius: 10,
+                                                      selectedIndex:
+                                                          _selectedFood,
+                                                      selectedTextStyle:
+                                                          GoogleFonts.lexendDeca(
                                                               color:
                                                                   Colors.white,
-                                                              fontSize: 18,
+                                                              fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w600),
                                                       unSelectedTextStyle:
-                                                          const TextStyle(
+                                                          GoogleFonts.lexendDeca(
                                                               color: Colors
                                                                   .blueAccent,
-                                                              fontSize: 14,
+                                                              fontSize: 12,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w400),
                                                       labels: const [
-                                                        "Male",
-                                                        "Female"
-                                                      ],
-                                                      icons: const [
-                                                        Icons.boy_rounded,
-                                                        Icons.girl_rounded
+                                                        "Vegitarian",
+                                                        "Non-Vegitarian"
                                                       ],
                                                       selectedLabelIndex:
                                                           (index) {
                                                         setState(() {
-                                                          _selectedGender = index;
+                                                          _selectedFood = index;
                                                         });
                                                       },
                                                     ),
-                                                  ],
-                                                ),
-                                              ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'Height:',
-                                                      style: GoogleFonts.outfit(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black,
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      0, 10, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      AutoSizeText(
+                                                        'Smoker:',
+                                                        style:
+                                                            GoogleFonts.outfit(
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.black,
+                                                        ),
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      textAlign:
-                                                          TextAlign.center,
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 10, 0, 0),
+                                                    child: FlutterToggleTab(
+                                                      width: 60,
+                                                      height: 40,
+                                                      borderRadius: 10,
+                                                      selectedIndex:
+                                                          _selectedSmoker,
+                                                      selectedTextStyle:
+                                                          GoogleFonts.lexendDeca(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                      unSelectedTextStyle:
+                                                          GoogleFonts.lexendDeca(
+                                                              color: Colors
+                                                                  .blueAccent,
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                      labels: const [
+                                                        "Yes",
+                                                        "No"
+                                                      ],
+                                                      selectedLabelIndex:
+                                                          (index) {
+                                                        setState(() {
+                                                          _selectedSmoker =
+                                                              index;
+                                                        });
+                                                      },
                                                     ),
-                                                  ],
-                                                ),
-                                                NumberPicker(
-                                                  textMapper: (numberText) =>
-                                                      "${numberText} cm",
-                                                  value:
-                                                      _currentHorizontalIntValue,
-                                                  minValue: 100,
-                                                  maxValue: 250,
-                                                  step: 1,
-                                                  itemHeight: 60,
-                                                  axis: Axis.horizontal,
-                                                  onChanged: (value) =>
-                                                      setState(() => {
-                                                            _currentHorizontalIntValue =
-                                                                value,
-                                                            print(
-                                                                _currentHorizontalIntValue)
-                                                          }),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16),
-                                                    border: Border.all(
-                                                        width: 2,
-                                                        color: Colors.black26),
                                                   ),
-                                                  selectedTextStyle:
-                                                      GoogleFonts.outfit(
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.w800,
-                                                    color: Colors.blueAccent,
-                                                  ),
-                                                  textStyle: GoogleFonts.outfit(
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          Padding(
+                                            Padding(
                                             padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Column(
+                                                0, 30, 0, 0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               children: [
-                                                Row(
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'Weight:',
-                                                      style: GoogleFonts.outfit(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black,
-                                                      ),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                    ),
-                                                  ],
-                                                ),
-                                                NumberPicker(
-                                                  textMapper: (numberText) =>
-                                                      "${numberText} Kg",
-                                                  value:
-                                                      _currentHorizontalIntValue2,
-                                                  minValue: 20,
-                                                  maxValue: 180,
-                                                  step: 1,
-                                                  itemHeight: 60,
-                                                  axis: Axis.horizontal,
-                                                  onChanged: (value) =>
-                                                      setState(() => {
-                                                            _currentHorizontalIntValue2 =
-                                                                value,
-                                                            print(
-                                                                _currentHorizontalIntValue)
-                                                          }),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            16),
-                                                    border: Border.all(
-                                                        width: 2,
-                                                        color: Colors.black26),
-                                                  ),
-                                                  selectedTextStyle:
-                                                      GoogleFonts.outfit(
-                                                    fontSize: 17,
-                                                    fontWeight: FontWeight.w800,
-                                                    color: Colors.blueAccent,
-                                                  ),
-                                                  textStyle: GoogleFonts.outfit(
-                                                    fontSize: 13,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Colors.grey,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Column(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'Blood Group:',
-                                                      style: GoogleFonts.outfit(
-                                                        fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.black,
-                                                      ),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                    ),
-                                                  ],
-                                                ),
-                                                CustomDropdownButton2(
-                                                  hint: 'Select Item',
-                                                  dropdownItems: items,
-                                                  value: selectedValue,
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      selectedValue = value;
-                                                    });
+                                                ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          elevation: 4,
+                                                          fixedSize: const Size(
+                                                              150, 50),
+                                                          primary: Colors.black,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10.0),
+                                                          ),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  20,
+                                                                  0,
+                                                                  20,
+                                                                  0)),
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
                                                   },
+                                                  child: const Text(
+                                                    'Continue',
+                                                    style: TextStyle(
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
                                                 ),
                                               ],
                                             ),
-                                          )
-                                        ]),
+                                          ),
+                                          ]),
+                                    ),
                                   ),
                                 ),
                               ),

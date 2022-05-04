@@ -33,25 +33,31 @@ class _RegisterState extends State<Register> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.chevron_left_rounded,
-                      color: Colors.black,
-                      size: 40,
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/starttrace');
-                    },
+                   ElevatedButton(
+                  style: ElevatedButton.styleFrom
+                  (onPrimary: const Color(0xFFF1F4F8),
+                  primary: const Color(0xFFF1F4F8),
+                  elevation: 0),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.chevron_left_rounded,
+                        color: Colors.black,
+                        size: 25,
+                      ),
+                      AutoSizeText('Back',
+                          style: GoogleFonts.outfit(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                          ))
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 4, 0, 0),
-                    child: AutoSizeText('Back',
-                        style: GoogleFonts.outfit(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        )),
-                  ),
+                ),
                 ],
               )
             ],
@@ -88,8 +94,8 @@ class _RegisterState extends State<Register> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: 120,
-                                      height: 120,
+                                      width: 100,
+                                      height: 100,
                                       clipBehavior: Clip.antiAlias,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
@@ -105,236 +111,78 @@ class _RegisterState extends State<Register> {
                                   child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     30, 0, 30, 40),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    // color: const Color(0xFFF1F4F8),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        blurRadius: 10,
-                                        color: Color(0x2F565555),
-                                        offset: Offset(-1, 0),
-                                        spreadRadius: 2,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: SingleChildScrollView(
-                                    child: Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                                25, 20, 25, 25),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: [
-                                                AutoSizeText(
-                                                  'Register',
-                                                  style: GoogleFonts.outfit(
-                                                    fontSize: 32,
-                                                    fontWeight: FontWeight.w800,
-                                                    color: Colors.black,
+                                child: Scrollbar(
+                                  isAlwaysShown: true,
+                                thickness: 8,
+                                radius: const Radius.circular(15),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      // color: const Color(0xFFF1F4F8),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          blurRadius: 10,
+                                          color: Color(0x2F565555),
+                                          offset: Offset(-1, 0),
+                                          spreadRadius: 2,
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: SingleChildScrollView(
+                                      child: Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                                  25, 20, 25, 25),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 5, 0, 0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: [
+                                                  AutoSizeText(
+                                                    'Register',
+                                                    style: GoogleFonts.outfit(
+                                                      fontSize: 32,
+                                                      fontWeight: FontWeight.w800,
+                                                      color: Colors.black,
+                                                    ),
+                                                    overflow: TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.center,
                                                   ),
-                                                  overflow: TextOverflow.ellipsis,
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 5,
-                                                    color: Color(0x4D101213),
-                                                    offset: Offset(0, 2),
-                                                  )
                                                 ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: TextFormField(
-                                                // controller: emailAddressController,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Name',
-                                                  labelStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                  ),
-                                                  hintText:
-                                                      'Enter Your Name...',
-                                                  hintStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  contentPadding:
-                                                      const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                          24, 24, 20, 24),
-                                                ),
-                                                style: GoogleFonts.lexendDeca(
-                                                  color:
-                                                      const Color(0xFF95A1AC),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 5,
-                                                    color: Color(0x4D101213),
-                                                    offset: Offset(0, 2),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: TextFormField(
-                                                // controller: emailAddressController,
-                                                obscureText: false,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Phone Number',
-                                                  labelStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                  ),
-                                                  hintText:
-                                                      'Enter Your Phone Number...',
-                                                  hintStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 2,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  contentPadding:
-                                                      const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                          24, 24, 20, 24),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      blurRadius: 5,
+                                                      color: Color(0x4D101213),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
                                                 ),
-                                                style: GoogleFonts.lexendDeca(
-                                                  color:
-                                                      const Color(0xFF95A1AC),
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 5,
-                                                    color: Color(0x4D101213),
-                                                    offset: Offset(0, 2),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: TextFormField(
+                                                child: TextFormField(
                                                   // controller: emailAddressController,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelText: 'E-Mail Address',
+                                                    labelText: 'Name',
                                                     labelStyle:
                                                         GoogleFonts.lexendDeca(
-                                                      color: const Color(
-                                                          0xFF95A1AC),
+                                                      color:
+                                                          const Color(0xFF95A1AC),
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -342,11 +190,11 @@ class _RegisterState extends State<Register> {
                                                           Colors.white,
                                                     ),
                                                     hintText:
-                                                        'Enter your email...',
+                                                        'Enter Your Name...',
                                                     hintStyle:
                                                         GoogleFonts.lexendDeca(
-                                                      color: const Color(
-                                                          0xFF95A1AC),
+                                                      color:
+                                                          const Color(0xFF95A1AC),
                                                       fontSize: 14,
                                                       fontWeight:
                                                           FontWeight.normal,
@@ -355,8 +203,7 @@ class _RegisterState extends State<Register> {
                                                         OutlineInputBorder(
                                                       borderSide:
                                                           const BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
+                                                        color: Color(0x00000000),
                                                         width: 0,
                                                       ),
                                                       borderRadius:
@@ -367,8 +214,7 @@ class _RegisterState extends State<Register> {
                                                         OutlineInputBorder(
                                                       borderSide:
                                                           const BorderSide(
-                                                        color:
-                                                            Color(0x00000000),
+                                                        color: Color(0x00000000),
                                                         width: 0,
                                                       ),
                                                       borderRadius:
@@ -386,240 +232,405 @@ class _RegisterState extends State<Register> {
                                                     color:
                                                         const Color(0xFF95A1AC),
                                                     fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  )),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 5,
-                                                    color: Color(0x4D101213),
-                                                    offset: Offset(0, 2),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: TextFormField(
-                                                // controller: emailAddressController,
-                                                // obscureText: !passwordLoginVisibility,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Password',
-                                                  labelStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    backgroundColor:
-                                                        Colors.white,
+                                                    fontWeight: FontWeight.normal,
                                                   ),
-                                                  hintText:
-                                                      'Please enter your password...',
-                                                  hintStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  contentPadding:
-                                                      const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                          24, 24, 20, 24),
-                                                  suffixIcon: InkWell(
-                                                    onTap: () {},
-                                                    child: const Icon(
-                                                      // passwordLoginVisibility
-                                                      //     ? Icons.visibility_outlined
-                                                      //     :
-                                                      Icons
-                                                          .visibility_off_outlined,
-                                                      color: Color(0xFF57636C),
-                                                      size: 22,
-                                                    ),
-                                                  ),
-                                                ),
-                                                style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                  color: Colors.black,
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 20, 0, 0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    blurRadius: 5,
-                                                    color: Color(0x4D101213),
-                                                    offset: Offset(0, 2),
-                                                  )
-                                                ],
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              child: TextFormField(
-                                                // controller: emailAddressController,
-                                                // obscureText: !passwordLoginVisibility,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Confirm Password',
-                                                  labelStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    backgroundColor:
-                                                        Colors.white,
-                                                  ),
-                                                  hintText:
-                                                      'Please Confirm Your Password...',
-                                                  hintStyle:
-                                                      GoogleFonts.lexendDeca(
-                                                    color:
-                                                        const Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
-                                                  enabledBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  focusedBorder:
-                                                      OutlineInputBorder(
-                                                    borderSide:
-                                                        const BorderSide(
-                                                      color: Color(0x00000000),
-                                                      width: 0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12),
-                                                  ),
-                                                  filled: true,
-                                                  fillColor: Colors.white,
-                                                  contentPadding:
-                                                      const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                          24, 24, 20, 24),
-                                                  suffixIcon: InkWell(
-                                                    onTap: () {},
-                                                    child: const Icon(
-                                                      // passwordLoginVisibility
-                                                      //     ? Icons.visibility_outlined
-                                                      //     :
-                                                      Icons
-                                                          .visibility_off_outlined,
-                                                      color: Color(0xFF57636C),
-                                                      size: 22,
-                                                    ),
-                                                  ),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      blurRadius: 5,
+                                                      color: Color(0x4D101213),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
                                                 ),
-                                                style: const TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.normal,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 30, 0, 0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          elevation: 4,
-                                                          fixedSize: const Size(
-                                                              150, 50),
-                                                          primary: Colors.black,
-                                                          shape:
-                                                              RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0),
-                                                          ),
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .fromLTRB(
-                                                                  20,
-                                                                  0,
-                                                                  20,
-                                                                  0)),
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
-                                                  },
-                                                  child: const Text(
-                                                    'Register',
-                                                    style: TextStyle(
-                                                      fontSize: 15,
+                                                child: TextFormField(
+                                                  // controller: emailAddressController,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Phone Number',
+                                                    labelStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
                                                       fontWeight:
-                                                          FontWeight.w700,
-                                                      color: Colors.white,
+                                                          FontWeight.normal,
+                                                      backgroundColor:
+                                                          Colors.white,
                                                     ),
+                                                    hintText:
+                                                        'Enter Your Phone Number...',
+                                                    hintStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 2,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: Colors.white,
+                                                    contentPadding:
+                                                        const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                            24, 24, 20, 24),
+                                                  ),
+                                                  style: GoogleFonts.lexendDeca(
+                                                    color:
+                                                        const Color(0xFF95A1AC),
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
                                                   ),
                                                 ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      blurRadius: 5,
+                                                      color: Color(0x4D101213),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: TextFormField(
+                                                    // controller: emailAddressController,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      labelText: 'E-Mail Address',
+                                                      labelStyle:
+                                                          GoogleFonts.lexendDeca(
+                                                        color: const Color(
+                                                            0xFF95A1AC),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        backgroundColor:
+                                                            Colors.white,
+                                                      ),
+                                                      hintText:
+                                                          'Enter your email...',
+                                                      hintStyle:
+                                                          GoogleFonts.lexendDeca(
+                                                        color: const Color(
+                                                            0xFF95A1AC),
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                12),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0x00000000),
+                                                          width: 0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                12),
+                                                      ),
+                                                      filled: true,
+                                                      fillColor: Colors.white,
+                                                      contentPadding:
+                                                          const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                              24, 24, 20, 24),
+                                                    ),
+                                                    style: GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    )),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      blurRadius: 5,
+                                                      color: Color(0x4D101213),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: TextFormField(
+                                                  // controller: emailAddressController,
+                                                  // obscureText: !passwordLoginVisibility,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Password',
+                                                    labelStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                    ),
+                                                    hintText:
+                                                        'Please enter your password...',
+                                                    hintStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: Colors.white,
+                                                    contentPadding:
+                                                        const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                            24, 24, 20, 24),
+                                                    suffixIcon: InkWell(
+                                                      onTap: () {},
+                                                      child: const Icon(
+                                                        // passwordLoginVisibility
+                                                        //     ? Icons.visibility_outlined
+                                                        //     :
+                                                        Icons
+                                                            .visibility_off_outlined,
+                                                        color: Color(0xFF57636C),
+                                                        size: 22,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  style: const TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  boxShadow: const [
+                                                    BoxShadow(
+                                                      blurRadius: 5,
+                                                      color: Color(0x4D101213),
+                                                      offset: Offset(0, 2),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: TextFormField(
+                                                  // controller: emailAddressController,
+                                                  // obscureText: !passwordLoginVisibility,
+                                                  decoration: InputDecoration(
+                                                    labelText: 'Confirm Password',
+                                                    labelStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      backgroundColor:
+                                                          Colors.white,
+                                                    ),
+                                                    hintText:
+                                                        'Please Confirm Your Password...',
+                                                    hintStyle:
+                                                        GoogleFonts.lexendDeca(
+                                                      color:
+                                                          const Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide:
+                                                          const BorderSide(
+                                                        color: Color(0x00000000),
+                                                        width: 0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12),
+                                                    ),
+                                                    filled: true,
+                                                    fillColor: Colors.white,
+                                                    contentPadding:
+                                                        const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                            24, 24, 20, 24),
+                                                    suffixIcon: InkWell(
+                                                      onTap: () {},
+                                                      child: const Icon(
+                                                        // passwordLoginVisibility
+                                                        //     ? Icons.visibility_outlined
+                                                        //     :
+                                                        Icons
+                                                            .visibility_off_outlined,
+                                                        color: Color(0xFF57636C),
+                                                        size: 22,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  style: const TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.normal,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 30, 0, 0),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  ElevatedButton(
+                                                    style:
+                                                        ElevatedButton.styleFrom(
+                                                            elevation: 4,
+                                                            fixedSize: const Size(
+                                                                150, 50),
+                                                            primary: Colors.black,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.0),
+                                                            ),
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .fromLTRB(
+                                                                    20,
+                                                                    0,
+                                                                    20,
+                                                                    0)),
+                                                    onPressed: () {
+                                                      Navigator.pushNamed(context, '/info');
+                                                    },
+                                                    child: const Text(
+                                                      'Register',
+                                                      style: TextStyle(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
